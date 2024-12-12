@@ -8,5 +8,5 @@ import { TitleCasePipe } from '@angular/common';
   styleUrl: './user-avatar.component.scss'
 })
 export class UserAvatarComponent {
-  readonly username = input<string>('Matthias Maurer')
+  readonly username = input<string>('Matthias Maurer');
 }

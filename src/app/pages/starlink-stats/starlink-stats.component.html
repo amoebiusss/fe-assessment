@@ -1,0 +1,90 @@
+
+
+
+<section class="container bg-white py-12 px-6 shadow-xl ring-1 ring-gray-900/5 max-w-2xl mx-auto rounded-lg sm:px-10">
+    <h1 class="text-3xl font-medium my-6">
+        Starlinks
+    </h1>
+
+	<!-- TODO: move to separate component to avoid duplication -->
+	<section>
+		<h3 class="text-lg">divisible by 3</h3>
+
+		@for (item of three(); track item.id) {
+			<div class="cursor-pointer bg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col" [routerLink]="['/starlink', item.id]">
+				
+				<ul>
+					<li>ID: {{ item.id }}</li>
+					<li>Height (km): {{ item.height_km | number: '1.0-0' }}</li>
+					<li>Creation date: {{ item.spaceTrack.CREATION_DATE | date:"dd-mm-yyyy" }}</li>
+					<li>Country code: {{ item.spaceTrack.COUNTRY_CODE }}</li>
+				</ul>
+			</div>
+		} @empty {
+			<div class="bg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col">
+				<p>No items</p>
+			</div>
+		}
+	</section>
+
+	<section>
+		<h3 class="text-lg">divisible by 5</h3>
+
+		@for (item of five(); track item.id) {
+			<div class="cursor-pointerbg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col" [routerLink]="['/starlink', item.id]">
+				
+				<ul>
+					<li>ID: {{ item.id }}</li>
+					<li>Height (km): {{ item.height_km | number: '1.0-0' }}</li>
+					<li>Creation date: {{ item.spaceTrack.CREATION_DATE | date:"dd-mm-yyyy" }}</li>
+					<li>Country code: {{ item.spaceTrack.COUNTRY_CODE }}</li>
+				</ul>
+			</div>
+		} @empty {
+			<div class="bg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col">
+				<p>No items</p>
+			</div>
+		}
+	</section>
+
+	<section>
+		<h3 class="text-lg">divisible by 3 & 5</h3>
+
+		@for (item of threeAndFive(); track item.id) {
+			<div class="cursor-pointer bg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col" [routerLink]="['/starlink', item.id]">		
+				<ul>
+					<li>ID: {{ item.id }}</li>
+					<li>Height (km): {{ item.height_km | number: '1.0-0' }}</li>
+					<li>Creation date: {{ item.spaceTrack.CREATION_DATE | date:"dd-mm-yyyy" }}</li>
+					<li>Country code: {{ item.spaceTrack.COUNTRY_CODE }}</li>
+				</ul>
+			</div>
+		} @empty {
+			<div class="bg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col">
+				<p>No items</p>
+			</div>
+		}
+	</section>
+
+	<section>
+		<h3 class="text-lg">not divisible by 3 & 5</h3>
+		@for (item of norThreeNeitherFive(); track item.id) {
+			<div class="cursor-pointer bg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col" [routerLink]="['/starlink', item.id]">
+				<ul>
+					<li>ID: {{ item.id }}</li>
+					<li>Height (km): {{ item.height_km | number: '1.0-0' }}</li>
+					<li>Creation date: {{ item.spaceTrack.CREATION_DATE | date:"dd-mm-yyyy" }}</li>
+					<li>Country code: {{ item.spaceTrack.COUNTRY_CODE }}</li>
+				</ul>
+			</div>
+		} @empty {
+			<div class="bg-white m-4 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col">
+				<p>No items</p>
+			</div>
+		}
+	</section>
+</section>
+
+<!-- <div class="pagination">
+	TODO
+</div> -->
