@@ -1,20 +1,21 @@
-<header>
-    <nav>
-        <a href="#">
-			<img src="" alt="Switch Together">
-			<img src="" alt="Switch Together" class="logo-reduced">
-			<img src="" alt="Layers" class="logo-partner">
-			<span>Switch Together x Layers</span>
+<header class="bg-transparent p-4">
+    <nav class="flex flex-row flex justify-between items-center">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+			<img src="assets/images/logo.svg" class="h-8 max-md:hidden" alt="Logo" />
+			<img src="assets/images/logo-reduced.svg" class="h-8 md:hidden" alt="Logo" />
+			<img src="assets/images/cross.svg" class="h-8" alt="Logo" />
+			<img src="assets/images/logo-partner.svg" class="h-8" alt="Logo" />
+			<span class="sr-only">Switch Together & Layers</span>
 		</a>
 
-        <div>
-            <button class="help-button" type="button">Help</button>
+        <div class="flex flex-row items-center max-md:hidden">
+            <button class="help-button mx-4 px-6 py-4" type="button">Help</button>
             <app-user-avatar />
         </div>
 
-        <button type="button">
-			<span>Open main menu</span>
-			<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+        <button type="button" class="flex flex-row md:hidden items-center p-5">
+			<span class="sr-only">Open main menu</span>
+			<svg class="not-sr-only" xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
 				<path d="M1 7H19M1 1H19M1 13H19" stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 			</svg>
 		</button>

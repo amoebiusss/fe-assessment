@@ -1,9 +1,8 @@
-<section>
-	<div class="heading-container">
-		<h2>Your details</h2>
-
-		<button type="button">
-			<span>Edit profile details</span>
+<section class="bg-secondary-bg my-8 py-10 px-6 ring-1 ring-secondary-border rounded-lg divide-y">
+	<div class="flex flex-row justify-between w-full">
+		<h2 class="text-2xl font-medium">Your details</h2>
+		<button type="button" class="inline-flex items-center p-2 w-10 h-10 m-6 bg-white justify-center border-2 border-gray-200 rounded-lg">
+			<span class="sr-only">Edit profile details</span>
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 				<path
 					d="M9.16669 3.34017H5.66669C4.26656 3.34017 3.56649 3.34017 3.03171 3.61265C2.56131 3.85234 2.17885 4.23479 1.93917 4.70519C1.66669 5.23997 1.66669 5.94004 1.66669 7.34017V14.3402C1.66669 15.7403 1.66669 16.4404 1.93917 16.9751C2.17885 17.4456 2.56131 17.828 3.03171 18.0677C3.56649 18.3402 4.26656 18.3402 5.66669 18.3402H12.6667C14.0668 18.3402 14.7669 18.3402 15.3017 18.0677C15.7721 17.828 16.1545 17.4456 16.3942 16.9751C16.6667 16.4404 16.6667 15.7403 16.6667 14.3402V10.8402M6.66666 13.3402H8.06212C8.46977 13.3402 8.67359 13.3402 8.86541 13.2941C9.03547 13.2533 9.19804 13.186 9.34716 13.0946C9.51536 12.9915 9.65948 12.8474 9.94773 12.5591L17.9167 4.59017C18.607 3.89982 18.607 2.78053 17.9167 2.09017C17.2263 1.39981 16.107 1.39981 15.4167 2.09017L7.44772 10.0591C7.15946 10.3474 7.01534 10.4915 6.91227 10.6597C6.82088 10.8088 6.75354 10.9714 6.71271 11.1415C6.66666 11.3333 6.66666 11.5371 6.66666 11.9447V13.3402Z"
@@ -14,39 +13,62 @@
 			</svg>
 		</button>
 	</div>
-
-	@if (user) {
-		<dl>
-			<div>
-				<dt>First name</dt>
-				<dd>{{ user.name }}</dd>
-
-				<dt>Last name</dt>
-				<dd>{{ user.surname }}</dd>
-
-				<dt>Email</dt>
-				<dd>
-					<a [href]="'mailto:' + user.email">{{ user.email }}</a>
-				</dd>
-
-				<dt>Phone number</dt>
-				<dd>
-					<a href="'tel:'+ user.phoneNumber">{{ user.phoneNumber }}</a>
-				</dd>
-			</div>
-
-			<div>
-				<dt>Agency</dt>
-				<dd>{{ user.agency }}</dd>
-
-				<dt>ID</dt>
-				<dd>{{ user.id }}</dd>
-
-				<dt>Social</dt>
-				<dd>
-					<a [href]="user.social.link">{{ user.social.title }}</a>
-				</dd>
-			</div>
-		</dl>
-	}
+	<table class="w-full my-4 py-4 divide-y table-fixed text-left">
+		<caption class="sr-only">
+			Personal details
+		</caption>
+		<tbody class="mt-4">
+			@if (user) {
+				<tr>
+					<th scope="row">First name</th>
+					<td>{{ user.name }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Last name</th>
+					<td>{{ user.surname }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Email</th>
+					<td>
+						<a [href]="'mailto:' + user.email">{{ user.email }}</a>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Phone number</th>
+					<td>
+						<a href="'tel:'+ user.phoneNumber">{{ user.phoneNumber }}</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<table class="w-full my-4 py-4 divide-y table-fixed text-left">
+		<caption class="sr-only">
+			Agency details
+		</caption>
+		<tbody class="mt-4">
+			@if (user) {
+				<tr>
+					<th scope="row">Agency</th>
+					<td>{{ user.agency }}</td>
+				</tr>
+				<tr>
+					<th scope="row">ID</th>
+					<td>{{ user.id }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Social</th>
+					<td>
+						<a [href]="user.social.link">{{ user.social.title }}</a>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Phone number</th>
+					<td>
+						<a href="'tel:'+ user.phoneNumber">{{ user.phoneNumber }}</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </section>

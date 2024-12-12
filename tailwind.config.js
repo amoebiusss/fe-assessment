@@ -11,7 +11,9 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         'brand-primary': '#418D23',
+        'brand-secondary': '#ABEFC6',
         'secondary-bg': '#F9FAFB',
+        'secondary-border': '#EAECF0',
       },
     },
   },
