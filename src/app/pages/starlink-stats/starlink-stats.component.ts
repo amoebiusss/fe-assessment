@@ -83,12 +83,14 @@ export class StarlinkStatsComponent {
 
 			if (roundedHeight % 3 === 0 && roundedHeight % 5 === 0) {
 			  divisibleByThreeAndFive.push(starlink);
-			} else if (roundedHeight % 3 === 0) {
+			} else {
+				notDivisibleByThreeOrFive.push(starlink);
+			}
+
+			if (roundedHeight % 3 === 0) {
 			  divisibleByThree.push(starlink);
 			} else if (roundedHeight % 5 === 0) {
 			  divisibleByFive.push(starlink);
-			} else {
-			  notDivisibleByThreeOrFive.push(starlink);
 			}
 		});
 
