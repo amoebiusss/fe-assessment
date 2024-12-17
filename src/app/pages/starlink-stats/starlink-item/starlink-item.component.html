@@ -1,0 +1,20 @@
+<section>
+    <h3 class="text-lg">{{ itemGroupTitle() }}</h3>
+
+    <div class="bg-white my-2 rounded-lg grid grid-cols-2 auto-cols-min max-sm:grid-cols-1 gap-4 justify-between">
+        @if (!items()) {
+            <app-loader></app-loader>
+        } @else {
+            @for (item of items(); track item.id) {
+                <ul class="cursor-pointer bg-white my-2 p-4 ring-1 ring-secondary-border rounded-lg flex flex-col text-sm" [routerLink]="['/starlink', item.id]">
+                    <li>ID: <span>{{ item.id }}</span></li>
+                    <li>Height (km): {{ item.heightKilometers | number: '1.0-0' }}</li>
+                    <li>Creation date: {{ item.creationDate | date: "dd-mm-yyyy" }}</li>
+                    <li>Country code: {{ item.countryCode }}</li>
+                </ul>
+            } @empty {
+                <p class="my-2 p-4 ring-1 ring-secondary-border rounded-lg">No items</p>
+            }
+        }
+    </div>
+</section>

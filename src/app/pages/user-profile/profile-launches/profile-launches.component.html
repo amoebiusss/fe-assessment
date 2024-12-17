@@ -1,9 +1,11 @@
-<section>
-    <h3 class="font-semibold text-2xl">Upcoming launches</h3>
+<section class="my-8">
+    <h2>Upcoming launches</h2>
 
-    <div class="bg-white my-8 py-10 px-6 ring-1 ring-secondary-border rounded-lg flex flex-col">
-        <h4 class="font-medium text-lg">Apollo 24</h4>
-        <label for="step">Step: Health check - pending</label>
-        <progress id="step" max="100" value="60"></progress>
+    <div class="bg-white mt-6 py-10 px-6 ring-1 ring-secondary-border rounded-lg flex flex-col">
+        <h4>Apollo 24</h4>
+        <div class="progress-wrapper my-2 flex flex-col">
+            <label class="text-sm font-normal mb-2" for="step">Step: Health check - pending</label>
+            <progress class="w-full" id="step" max="100" value="60"></progress>
+        </div>     
     </div>
 </section>

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+
+import { CrewMember, UserStatus } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-profile-stats',
@@ -7,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './profile-stats.component.scss'
 })
 export class ProfileStatsComponent {
-
+  user = input<CrewMember | null>();
+  UserStatus = UserStatus;
 }

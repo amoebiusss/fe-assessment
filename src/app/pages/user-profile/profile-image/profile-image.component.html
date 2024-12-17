@@ -1,12 +1,12 @@
-<section class="bg-white my-8 ring-1 ring-secondary-border rounded-lg flex flex-row">
-    <div class="image-wrapper rounded-lg">
-        <img class="rounded-l-lg mr-6" src="assets/images/profile-pic.png" alt="User profile">
+<section class="bg-white my-8 ring-1 ring-secondary-border rounded-lg flex flex-row max-md:flex-col max-h-min overflow-y-hidden">
+    <div class="image-wrapper rounded-lg max-md:rounded-none">
+        <img class="h-auto rounded-l-lg mr-6 max-md:rounded-l-none max-md: w-full" [src]="image()" alt="User profile">
     </div>
-    <div class="flex flex-col justify-center">
-        <h2 class="font-medium text-lg">Profile image</h2>
-        <div class="buttons-container my-4">
-            <button class="px-4 py-2 bg-brand-primary text-white rounded-lg mr-4" type="button">Replace</button>
-            <button class="px-4 py-2 ring-1 ring-secondary-border hover:bg-brand-primary rounded-lg" type="button">Remove</button>
+    <div class="p-6 flex flex-col justify-between">
+        <h3 class="text-lg">Profile image</h3>
+        <div class="buttons-container flex">
+            <button class="btn btn-primary mr-4 my-2" type="button">Replace</button>
+            <button class="btn btn-secondary my-2" type="button">Remove</button>
         </div>
     </div>
 </section>

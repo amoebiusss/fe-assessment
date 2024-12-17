@@ -1,5 +1,5 @@
-<app-header />
+<app-header [user]="user() || {}"></app-header>
 
-<main>
+<main class="py-10">
     <router-outlet />
 </main>
