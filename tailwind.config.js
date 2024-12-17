@@ -15,6 +15,9 @@ module.exports = {
         'secondary-bg': '#F9FAFB',
         'secondary-border': '#EAECF0',
       },
+      container: {
+        center: true,
+      },
     },
   },
   plugins: [],

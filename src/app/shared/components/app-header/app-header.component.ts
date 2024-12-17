@@ -9,5 +9,4 @@ import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
   styleUrl: './app-header.component.scss'
 })
 export class AppHeaderComponent {
-
 }

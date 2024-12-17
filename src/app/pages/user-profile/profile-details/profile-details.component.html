@@ -1,7 +1,7 @@
-<section class="bg-secondary-bg my-8 py-10 px-6 ring-1 ring-secondary-border rounded-lg divide-y">
-	<div class="flex flex-row justify-between w-full">
-		<h2 class="text-2xl font-medium">Your details</h2>
-		<button type="button" class="inline-flex items-center p-2 w-10 h-10 m-6 bg-white justify-center border-2 border-gray-200 rounded-lg">
+<section class="bg-secondary-bg my-8 py-6 px-6 ring-1 ring-secondary-border rounded-lg divide-y">
+	<div class="flex flex-row justify-between w-full items-center">
+		<h3 class="text-lg">Your details</h3>
+		<button type="button" class="inline-flex items-center p-2 w-9 h-9 m-4 bg-white justify-center border-2 border-gray-200 rounded-lg">
 			<span class="sr-only">Edit profile details</span>
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 				<path
@@ -13,30 +13,30 @@
 			</svg>
 		</button>
 	</div>
-	<table class="w-full my-4 py-4 divide-y table-fixed text-left">
+	<table class="w-full max-w-full mb-4 py-4 divide-y table-fixed text-left truncate text-ellipsis">
 		<caption class="sr-only">
 			Personal details
 		</caption>
 		<tbody class="mt-4">
-			@if (user) {
+			@if (user()) {
 				<tr>
 					<th scope="row">First name</th>
-					<td>{{ user.name }}</td>
+					<td>{{ user()?.name }}</td>
 				</tr>
 				<tr>
 					<th scope="row">Last name</th>
-					<td>{{ user.surname }}</td>
+					<td>{{ user()?.surname }}</td>
 				</tr>
 				<tr>
 					<th scope="row">Email</th>
 					<td>
-						<a [href]="'mailto:' + user.email">{{ user.email }}</a>
+						<a [href]="'mailto:' + user()?.email">{{ user()?.email }}</a>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row">Phone number</th>
 					<td>
-						<a href="'tel:'+ user.phoneNumber">{{ user.phoneNumber }}</a>
+						<a href="'tel:'+ user()?.phoneNumber">{{ user()?.phoneNumber }}</a>
 					</td>
 				</tr>
 			}
@@ -47,25 +47,24 @@
 			Agency details
 		</caption>
 		<tbody class="mt-4">
-			@if (user) {
+			@if (user()) {
 				<tr>
 					<th scope="row">Agency</th>
-					<td>{{ user.agency }}</td>
+					<td>{{ user()?.agency }}</td>
 				</tr>
 				<tr>
 					<th scope="row">ID</th>
-					<td>{{ user.id }}</td>
+					<td>{{ user()?.id }}</td>
 				</tr>
 				<tr>
 					<th scope="row">Social</th>
 					<td>
-						<a [href]="user.social.link">{{ user.social.title }}</a>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">Phone number</th>
-					<td>
-						<a href="'tel:'+ user.phoneNumber">{{ user.phoneNumber }}</a>
+						<a class="text-center" [href]="user()?.social?.link">
+                            <svg class="not-sr-only mr-2 inline" xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14" fill="none">
+                                <path d="M20.0002 0.6L19.9908 0.98125C19.1127 1.00625 18.5846 1.475 18.2471 2.24062C17.4658 4.04688 15.0189 9.74062 13.3939 13.4469H12.9689L10.4096 7.4125C9.39395 9.4 8.2752 11.475 7.30957 13.4469C7.3002 13.4562 6.84082 13.4469 6.84082 13.4375C5.3752 10.0094 3.8377 6.60625 2.36895 3.16875C2.0127 2.33437 0.825195 0.98125 0.00644531 0.990625C0.00644531 0.89375 -0.00292969 0.678125 -0.00292969 0.546875H5.05645V0.98125C4.45645 1.01563 3.40645 1.39687 3.70332 2.05C4.3877 3.60313 6.94082 9.55938 7.62832 11.0688C8.09707 10.1406 9.43457 7.65625 9.98145 6.60625C9.54707 5.72187 8.1502 2.42188 7.70645 1.60625C7.40332 1.05 6.57832 1 5.9627 0.990625V0.55625L10.4158 0.565625V0.975C9.80957 0.99375 9.2252 1.21875 9.49707 1.79063C10.0877 3.04063 10.4533 3.91875 11.0002 5.0625C11.1752 4.725 12.0846 2.89375 12.5033 1.9125C12.7814 1.26875 12.3814 1.01875 11.2971 0.99375C11.3064 0.88125 11.2971 0.671875 11.3064 0.56875C12.6939 0.559375 14.7783 0.559375 15.1533 0.55V0.975C14.4502 1 13.7221 1.375 13.3377 1.96563L11.4877 5.80312C11.6877 6.30625 13.4658 10.2656 13.6502 10.7L17.4752 1.86875C17.2064 1.14688 16.3377 0.990625 16.0002 0.984375V0.55L19.9939 0.584375L20.0002 0.6Z" fill="black"/>
+                            </svg>
+                            <span>{{ user()?.social?.title || '' }}</span>
+                        </a>
 					</td>
 				</tr>
 			}
