@@ -75,8 +75,14 @@
             @apply bg-white hover:bg-gray-200 ring-1 ring-secondary-border; 
         }
     }
+    .tag {
+        @apply w-fit rounded-full px-2 py-1 block mx-auto text-center;
 
-    // .card {
-    //   background-color: theme('colors.white');
-    // }
+        &.tag-active {
+            @apply bg-brand-secondary/30 ring-1 ring-brand-secondary/100 text-brand-primary;
+        }
+        &.tag-inactive {
+            @apply bg-red-500 ring-1 ring-red-500 text-white;
+        }
+    }
 }

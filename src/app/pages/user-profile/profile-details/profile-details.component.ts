@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 
 import { UserDataService } from '../../../shared/services/user-data.service';
-import { User } from '../../../shared/interfaces';
+import { CrewMember } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-profile-details',
@@ -12,5 +12,5 @@ import { User } from '../../../shared/interfaces';
 })
 export class ProfileDetailsComponent {
   dataService = inject(UserDataService);
-  user = input<User>({} as User); 
+  user = input<CrewMember| null>({} as CrewMember); 
 }

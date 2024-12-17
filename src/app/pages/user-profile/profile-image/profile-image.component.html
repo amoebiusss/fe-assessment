@@ -1,6 +1,6 @@
-<section class="bg-white my-8 ring-1 ring-secondary-border rounded-lg flex flex-row max-md:flex-col">
+<section class="bg-white my-8 ring-1 ring-secondary-border rounded-lg flex flex-row max-md:flex-col max-h-min overflow-y-hidden">
     <div class="image-wrapper rounded-lg max-md:rounded-none">
-        <img class="h-full rounded-l-lg mr-6 max-md:rounded-l-none max-md: w-full" src="assets/images/profile-pic.png" alt="User profile">
+        <img class="h-auto rounded-l-lg mr-6 max-md:rounded-l-none max-md: w-full" [src]="image()" alt="User profile">
     </div>
     <div class="p-6 flex flex-col justify-between">
         <h3 class="text-lg">Profile image</h3>

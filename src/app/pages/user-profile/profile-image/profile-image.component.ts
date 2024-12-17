@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+
+const PLACEHOLDER_IMG = '';
 
 @Component({
   selector: 'app-profile-image',
@@ -7,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './profile-image.component.scss'
 })
 export class ProfileImageComponent {
-
+  image = input<string>(PLACEHOLDER_IMG);
 }

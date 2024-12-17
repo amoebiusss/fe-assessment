@@ -1,12 +1,14 @@
 <div class="container bg-white py-12 px-6 shadow-xl ring-1 ring-gray-900/5 box-border max-w-xl sm:mx-auto rounded-lg max-md:max-w-md max-sm:max-w-sm sm:px-10">
     <h1>
         <span>{{ heading }}</span>
-        <span>{{ user.name }}</span>
+        <span>{{ userInfo()?.name }}</span>
     </h1>
 
-    <app-profile-image></app-profile-image>
-    <app-profile-stats></app-profile-stats>
-    <app-profile-details [user]="user"></app-profile-details>
-    <app-profile-launches></app-profile-launches>
+    @if (userInfo()) {
+        <app-profile-image [image]="userInfo()?.image || ''"></app-profile-image>
+        <app-profile-stats [user]="userInfo()"></app-profile-stats>
+        <app-profile-details [user]="userInfo()"></app-profile-details>
+        <app-profile-launches></app-profile-launches>
+    }
     <app-survey></app-survey>
 </div>
