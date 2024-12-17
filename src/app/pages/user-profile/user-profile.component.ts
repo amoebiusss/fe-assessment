@@ -16,7 +16,7 @@ import { CrewMember } from '../../shared/interfaces';
 @Component({
 	selector: 'app-user-profile',
 	imports: [ProfileDetailsComponent, ProfileLaunchesComponent, ProfileStatsComponent, SurveyComponent, RouterModule, ProfileImageComponent],
-  providers: [DataService, UserDataService],
+  providers: [DataService],
 	templateUrl: './user-profile.component.html',
 	styleUrl: './user-profile.component.scss',
 })
@@ -40,8 +40,8 @@ export class UserProfileComponent {
         tap(res => {
           if (res) {
             const { id, name, image } = res;
-            this.storedUserData.set({ id, name, image })
-            this.userService.setData({ id, name, image })
+            this.storedUserData.set({ id, name, image });
+            this.userService.setData({ id, name, image });
           }
         }),
         catchError((res: HttpErrorResponse) => {
@@ -57,19 +57,17 @@ export class UserProfileComponent {
 		{ initialValue: null }
 	);
 
-  constructor() {
-		effect(() => {
-        const { id, notFound } = this.userService.getData() || {};
-        const idRouteParam = this.id();
+  load = effect(() => {
+    const { id, notFound } = this.userService.getData() || {};
+    const idRouteParam = this.id();
 
-        if ((!id && !notFound) || (!idRouteParam && notFound)) {
-          const randomUserId = this.userService.getRandomUserId(this.userIds());
-          this.userId.set(randomUserId);
-        } else if (id && idRouteParam && (id !== idRouteParam)) {
-          this.userId.set(idRouteParam);
-        } else if (id && (id === idRouteParam || !idRouteParam)) {
-          this.userId.set(id);
-        }
-		});
-	}
+    if ((!id && !notFound) || (!idRouteParam && notFound)) {
+      const randomUserId = this.userService.getRandomUserId(this.userIds());
+      this.userId.set(randomUserId);
+    } else if (id && idRouteParam && (id !== idRouteParam)) {
+      this.userId.set(idRouteParam);
+    } else if (id && (id === idRouteParam || !idRouteParam)) {
+      this.userId.set(id);
+    }
+  });
 }

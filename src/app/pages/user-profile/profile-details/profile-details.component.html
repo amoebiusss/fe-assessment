@@ -20,14 +20,14 @@
 		<tbody class="mt-4">
 			@if (user()) {
 				<tr>
-					<th scope="row">First name</th>
+					<th scope="row">Name</th>
 					<td>{{ user()?.name }}</td>
 				</tr>
-				<!-- <tr>
+				<!--<tr>
 					<th scope="row">Last name</th>
-					<td>{{ user()?.surname }}</td>
-				</tr> -->
-				<!-- <tr>
+					<td>{{ user()?.name }}</td>
+				</tr>
+				 <tr>
 					<th scope="row">Email</th>
 					<td>
 						<a [href]="'mailto:' + user()?.email">{{ user()?.email }}</a>
