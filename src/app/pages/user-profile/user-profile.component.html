@@ -1,16 +1,17 @@
-<div class="container bg-white py-12 px-6 shadow-xl ring-1 ring-gray-900/5 box-border max-w-xl sm:mx-auto rounded-lg max-md:max-w-md max-sm:max-w-sm sm:px-10">
-    @if (userInfo()) {
-        <h1>
-            <span>{{ heading }}</span>
-            <span>{{ userInfo()?.name }}</span>
-        </h1>
-        <app-profile-image [image]="userInfo()?.image || ''"></app-profile-image>
-        <app-profile-stats [user]="userInfo()"></app-profile-stats>
-        <app-profile-details [user]="userInfo()"></app-profile-details>
-        <app-profile-launches></app-profile-launches>
-    } @else if (!userId()) {
-        <h1 class="mb-8">Sorry, there is no such user</h1>
-        <a class="btn btn-primary my-6" routerLink='/user-profile'>Show random user</a>
-    }
-    <app-survey></app-survey>
+<div
+	class="container bg-white py-12 px-6 shadow-xl ring-1 ring-gray-900/5 box-border max-w-xl sm:mx-auto rounded-lg max-md:max-w-md max-sm:max-w-sm sm:px-10">
+	@if (userInfo()) {
+		<h1>
+			<span>{{ heading }}</span>
+			<span>{{ userInfo()?.name }}</span>
+		</h1>
+		<app-profile-image [image]="userInfo()?.image || ''"></app-profile-image>
+		<app-profile-stats [user]="userInfo()"></app-profile-stats>
+		<app-profile-details [user]="userInfo()"></app-profile-details>
+		<app-profile-launches></app-profile-launches>
+	} @else if (!userId()) {
+		<h1 class="mb-8">Sorry, there is no such user</h1>
+		<a class="btn btn-primary my-6" routerLink="/user-profile">Show random user</a>
+	}
+	<app-survey></app-survey>
 </div>

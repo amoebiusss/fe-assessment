@@ -22,9 +22,12 @@ export class StarlinkComponent {
 	launchId = signal<string | null>(null);
 
 	id = toSignal(this.params);
-	starlinkInfo = toSignal(this.dataService.getStarlinkById(this.id()))
+	starlinkInfo = toSignal(this.dataService.getStarlinkById(this.id()));
 	launchInfo = toSignal<LaunchItem>(
-		toObservable(this.launchId).pipe(filter(Boolean), switchMap(id => this.dataService.getLaunchStats(id))),
+		toObservable(this.launchId).pipe(
+			filter(Boolean),
+			switchMap(id => this.dataService.getLaunchStats(id))
+		),
 		{ initialValue: null }
 	);
 
@@ -36,6 +39,6 @@ export class StarlinkComponent {
 	}
 
 	combinedPayloadsMass(payloads: Payload[]): number {
-		return payloads.reduce((prev, curr) => (prev + curr.mass_kg), 0)
+		return payloads.reduce((prev, curr) => prev + curr.mass_kg, 0);
 	}
 }

@@ -3,46 +3,46 @@
 
 	<!-- TODO: add back link -->
 
-    @if (launchInfo()) {
-        <div class="overflow-x-auto">
-            <table class="mt-4 w-full text-sm text-left text-gray-500 border-collapse">
-                <tbody>
-                    <tr class="border-b">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Launch success</th>
-                        <td class="px-6 py-4">
-                            {{ launchInfo()?.success }}
-                        </td>
-                    </tr>
-                    @if (launchInfo()?.details) {
-                        <tr class="border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Launch details</th>
-                            <td class="px-6 py-4">
-                                {{ launchInfo()?.details }}
-                            </td>
-                        </tr>
-                    }
-                    <tr class="border-b">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Launch date</th>
-                        <td class="px-6 py-4">
-                            {{ (launchInfo()?.date_utc | date: 'dd-mm-yyyy') || '-' }}
-                        </td>
-                    </tr>
-                    <tr class="border-b">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Combined mass of payloads</th>
-                        <td class="px-6 py-4">
-                            {{ combinedPayloadsMass(launchInfo()?.payloads || []) }}
-                        </td>
-                    </tr>
-                    <tr class="border-b">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Message from the first core of the launch</th>
-                        <td class="px-6 py-4">
-                            {{ launchInfo()?.core?.last_update || '-' }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    } @else {
-        <app-loader></app-loader>
-    }
+	@if (launchInfo()) {
+		<div class="overflow-x-auto">
+			<table class="mt-4 w-full text-sm text-left text-gray-500 border-collapse">
+				<tbody>
+					<tr class="border-b">
+						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Launch success</th>
+						<td class="px-6 py-4">
+							{{ launchInfo()?.success }}
+						</td>
+					</tr>
+					@if (launchInfo()?.details) {
+						<tr class="border-b">
+							<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Launch details</th>
+							<td class="px-6 py-4">
+								{{ launchInfo()?.details }}
+							</td>
+						</tr>
+					}
+					<tr class="border-b">
+						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Launch date</th>
+						<td class="px-6 py-4">
+							{{ (launchInfo()?.date_utc | date: 'dd-mm-yyyy') || '-' }}
+						</td>
+					</tr>
+					<tr class="border-b">
+						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Combined mass of payloads</th>
+						<td class="px-6 py-4">
+							{{ combinedPayloadsMass(launchInfo()?.payloads || []) }}
+						</td>
+					</tr>
+					<tr class="border-b">
+						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Message from the first core of the launch</th>
+						<td class="px-6 py-4">
+							{{ launchInfo()?.core?.last_update || '-' }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	} @else {
+		<app-loader></app-loader>
+	}
 </div>

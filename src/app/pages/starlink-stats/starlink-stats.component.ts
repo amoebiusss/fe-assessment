@@ -45,10 +45,10 @@ export class StarlinkStatsComponent {
 			this.threeAndFive.set(null);
 			this.norThreeNeitherFive.set(null);
 			this.totalPages.set(starlinks?.totalPages);
-			
+
 			if (starlinks) {
 				this.categorizeStarlinks(starlinks?.docs);
-		  	}
+			}
 		});
 	}
 
@@ -67,7 +67,7 @@ export class StarlinkStatsComponent {
 	onLoadMoreItems(currentPageIndex: number) {
 		if (this.next()) {
 			this.currentPageIndex.set(currentPageIndex + 1);
-		}  else {
+		} else {
 			return;
 		}
 	}
@@ -78,19 +78,19 @@ export class StarlinkStatsComponent {
 		const divisibleByThreeAndFive: StarlinkInfo[] = [];
 		const notDivisibleByThreeOrFive: StarlinkInfo[] = [];
 
-		starlinks.forEach((starlink) => {
+		starlinks.forEach(starlink => {
 			const roundedHeight = Math.round(starlink.heightKilometers);
 
 			if (roundedHeight % 3 === 0 && roundedHeight % 5 === 0) {
-			  divisibleByThreeAndFive.push(starlink);
+				divisibleByThreeAndFive.push(starlink);
 			} else {
 				notDivisibleByThreeOrFive.push(starlink);
 			}
 
 			if (roundedHeight % 3 === 0) {
-			  divisibleByThree.push(starlink);
+				divisibleByThree.push(starlink);
 			} else if (roundedHeight % 5 === 0) {
-			  divisibleByFive.push(starlink);
+				divisibleByFive.push(starlink);
 			}
 		});
 
