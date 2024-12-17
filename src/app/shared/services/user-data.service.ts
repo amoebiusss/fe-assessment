@@ -13,9 +13,9 @@ export class UserDataService {
     }
   }
 
-  setData(id: string, name?: string): void {
-    // TODO set name to ls
-    localStorage.setItem(USER_ID_KEY, JSON.stringify({ id, name }));
+  setData(data: { id?: string, name?: string, notFound?: boolean, image?: string }): void {
+    const { id, name, notFound, image } = data;
+    localStorage.setItem(USER_ID_KEY, JSON.stringify({ id, name, notFound, image }));
   }
 
   clearData() {

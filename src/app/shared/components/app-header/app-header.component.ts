@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
+import { CrewMember } from '../../interfaces';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +10,5 @@ import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
   styleUrl: './app-header.component.scss'
 })
 export class AppHeaderComponent {
+  user = input<Partial<CrewMember>>({});
 }

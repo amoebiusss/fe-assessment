@@ -23,10 +23,10 @@ export interface CrewMember {
     id: string;
     name: string;
     image: string;
-    wikipedia: string;
-    launches: string[];
-    status: UserStatus;
-    agency: string;
+    wikipedia?: string;
+    launches?: string[];
+    status?: UserStatus;
+    agency?: string;
 };
 
 export interface PaginatedUserInfo extends PaginatedInfo {
