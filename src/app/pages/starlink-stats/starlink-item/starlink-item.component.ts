@@ -6,11 +6,11 @@ import { LoaderComponent } from '../../../shared/components/loader/loader.compon
 import { StarlinkInfo } from '../../../shared/interfaces';
 
 @Component({
-  selector: 'app-starlink-group-item',
-  imports: [DecimalPipe, DatePipe, RouterModule, LoaderComponent],
-  templateUrl: './starlink-item.component.html',
+	selector: 'app-starlink-group-item',
+	imports: [DecimalPipe, DatePipe, RouterModule, LoaderComponent],
+	templateUrl: './starlink-item.component.html',
 })
 export class StarlinkItemGroupComponent {
-  items = input<StarlinkInfo[] | null>(null);
-  itemGroupTitle = input<string>('');
+	items = input<StarlinkInfo[] | null>(null);
+	itemGroupTitle = input<string>('');
 }

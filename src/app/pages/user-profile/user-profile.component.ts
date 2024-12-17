@@ -16,58 +16,60 @@ import { CrewMember } from '../../shared/interfaces';
 @Component({
 	selector: 'app-user-profile',
 	imports: [ProfileDetailsComponent, ProfileLaunchesComponent, ProfileStatsComponent, SurveyComponent, RouterModule, ProfileImageComponent],
-  providers: [DataService],
+	providers: [DataService],
 	templateUrl: './user-profile.component.html',
 	styleUrl: './user-profile.component.scss',
 })
 export class UserProfileComponent {
-  dataService = inject(DataService);
-  userService = inject(UserDataService);
+	dataService = inject(DataService);
+	userService = inject(UserDataService);
 
-  heading = 'Your profile, ';
+	heading = 'Your profile, ';
 
-  private params = inject(ActivatedRoute).params.pipe(map(res => res['id']));
+	private params = inject(ActivatedRoute).params.pipe(map(res => res['id']));
 	id = toSignal(this.params);
 
-  userId = signal<string | null>(null);
-  userIds = toSignal(this.dataService.getCrewMemberIds().pipe(filter(Boolean)));
-  storedUserData = signal<Partial<CrewMember>>({});
+	userId = signal<string | null>(null);
+	userIds = toSignal(this.dataService.getCrewMemberIds().pipe(filter(Boolean)));
+	storedUserData = signal<Partial<CrewMember>>({});
 
-  userInfo = toSignal<CrewMember>(
+	userInfo = toSignal<CrewMember>(
 		toObservable(this.userId).pipe(
-      filter(Boolean),
-      switchMap(userId => this.dataService.getCrewMemberById(userId).pipe(
-        tap(res => {
-          if (res) {
-            const { id, name, image } = res;
-            this.storedUserData.set({ id, name, image });
-            this.userService.setData({ id, name, image });
-          }
-        }),
-        catchError((res: HttpErrorResponse) => {
-          if (res.message.includes('404')) {
-            this.userService.clearData();
-            this.userService.setData({ notFound: true });
-            this.userId.set(null);
-          }
-          return EMPTY;
-        }))
-      )
-    ),
+			filter(Boolean),
+			switchMap(userId =>
+				this.dataService.getCrewMemberById(userId).pipe(
+					tap(res => {
+						if (res) {
+							const { id, name, image } = res;
+							this.storedUserData.set({ id, name, image });
+							this.userService.setData({ id, name, image });
+						}
+					}),
+					catchError((res: HttpErrorResponse) => {
+						if (res.message.includes('404')) {
+							this.userService.clearData();
+							this.userService.setData({ notFound: true });
+							this.userId.set(null);
+						}
+						return EMPTY;
+					})
+				)
+			)
+		),
 		{ initialValue: null }
 	);
 
-  load = effect(() => {
-    const { id, notFound } = this.userService.getData() || {};
-    const idRouteParam = this.id();
+	load = effect(() => {
+		const { id, notFound } = this.userService.getData() || {};
+		const idRouteParam = this.id();
 
-    if ((!id && !notFound) || (!idRouteParam && notFound)) {
-      const randomUserId = this.userService.getRandomUserId(this.userIds());
-      this.userId.set(randomUserId);
-    } else if (id && idRouteParam && (id !== idRouteParam)) {
-      this.userId.set(idRouteParam);
-    } else if (id && (id === idRouteParam || !idRouteParam)) {
-      this.userId.set(id);
-    }
-  });
+		if ((!id && !notFound) || (!idRouteParam && notFound)) {
+			const randomUserId = this.userService.getRandomUserId(this.userIds());
+			this.userId.set(randomUserId);
+		} else if (id && idRouteParam && id !== idRouteParam) {
+			this.userId.set(idRouteParam);
+		} else if (id && (id === idRouteParam || !idRouteParam)) {
+			this.userId.set(id);
+		}
+	});
 }

@@ -12,14 +12,13 @@ import { UserDataService } from '../../shared/services/user-data.service';
 	styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent implements OnInit {
-  userService = inject(UserDataService);
-  router = inject(Router);
-  user = this.userService.lsUserData;
+	userService = inject(UserDataService);
+	router = inject(Router);
+	user = this.userService.lsUserData;
 
-  ngOnInit() {
-    this.user.set(this.userService.getData());
+	ngOnInit() {
+		this.user.set(this.userService.getData());
 
-    this.router.events.pipe(filter(event => event instanceof NavigationStart))
-      .subscribe(() => this.user.set(this.userService.getData()));
-  }
+		this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe(() => this.user.set(this.userService.getData()));
+	}
 }

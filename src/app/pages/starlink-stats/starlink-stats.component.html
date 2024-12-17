@@ -1,5 +1,5 @@
 <section class="container bg-white py-12 px-6 shadow-xl ring-1 ring-gray-900/5 max-w-2xl mx-auto rounded-lg sm:px-10">
-    <h1 class="text-3xl font-medium my-6">Starlinks</h1>
+	<h1 class="text-3xl font-medium my-6">Starlinks</h1>
 
 	<app-starlink-group-item [itemGroupTitle]="'divisible by 3'" [items]="three()"></app-starlink-group-item>
 	<app-starlink-group-item [itemGroupTitle]="'divisible by 5'" [items]="five()"></app-starlink-group-item>
@@ -8,25 +8,21 @@
 
 	<div class="pagination flex justify-end">
 		<div class="pagination-list flex items-center">
-			<button 
-				class="btn btn-secondary rounded-full text-sm font-medium tracking-wide" 
+			<button
+				class="btn btn-secondary rounded-full text-sm font-medium tracking-wide"
 				type="button"
 				(click)="onPageChange(currentPageIndex() - 1)"
-				[disabled]="currentPageIndex() === minPageIndex"
-			>
+				[disabled]="currentPageIndex() === minPageIndex">
 				{{ 'back' | uppercase }}
 			</button>
 			<p class="mx-4">page: {{ currentPageIndex() }} of {{ totalPages() }}</p>
-			<button 
+			<button
 				class="btn btn-secondary rounded-full text-sm font-medium tracking-wide"
 				type="button"
 				(click)="onPageChange(currentPageIndex() + 1)"
-				[disabled]="currentPageIndex() === totalPages()"
-				>
+				[disabled]="currentPageIndex() === totalPages()">
 				{{ 'next' | uppercase }}
 			</button>
 		</div>
 	</div>
 </section>
-
-
